@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en" data-theme=""><head>
+    <title> loyalpartner | awesome-tab flycheck 引起 modeline 闪烁修复 </title>
+
+    
+    <meta charset="utf-8"><meta name="generator" content="Hugo 0.75.1" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta name="description" content="hello!">
+    
+    <link rel="stylesheet"
+          href="https://loyalpartner.github.io/css/style.min.2b188541d728e8afd69a6f1b8b83f89f2b138d671fb728eff20ff3f3dcf5b55e.css"
+          integrity="sha256-KxiFQdco6K/Wmm8bi4P4nysTjWcftyjv8g/z89z1tV4="
+          crossorigin="anonymous"
+          type="text/css"><link rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" 
+    integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" 
+    crossorigin="anonymous" />
+
+    
+    <link rel="shortcut icon" href="https://loyalpartner.github.iofavicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://loyalpartner.github.ioapple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://loyalpartner.github.iofavicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://loyalpartner.github.iofavicon-16x16.png">
+
+    <link rel="canonical" href="https://loyalpartner.github.io/post/fix-awesome/">
+
+    
+    
+    
+    
+    <script type="text/javascript"
+            src="https://loyalpartner.github.io/js/anatole-header.min.e782db136ec18d105a4552702eac49f4620d6867da3fbf808bd53e806c96be6e.js"
+            integrity="sha256-54LbE27BjRBaRVJwLqxJ9GINaGfaP7&#43;Ai9U&#43;gGyWvm4="
+            crossorigin="anonymous"></script>
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="awesome-tab flycheck 引起 modeline 闪烁修复"/>
+<meta name="twitter:description" content="问题描述:
+https://github.com/manateelazycat/awesome-tab/issues/85
+ 重现代码  (setq package-enable-at-startup nil) (setq package-archives &#39;((&#34;org&#34; . &#34;http://orgmode.org/elpa/&#34;) (&#34;gnu&#34; . &#34;http://elpa.gnu.org/packages/&#34;) (&#34;melpa&#34; . &#34;https://melpa.org/packages/&#34;) (&#34;melpa-stable&#34; . &#34;http://stable.melpa.org/packages/&#34;))) (package-initialize) ;; Bootstrap `use-package&#39; (unless (package-installed-p &#39;use-package) (package-refresh-contents) (package-install &#39;use-package)) (require &#39;use-package) (use-package awesome-tab :load-path &#34;~/.emacs.d/.local/straight/repos/awesome-tab&#34; :config (awesome-tab-mode)) (use-package doom-modeline :ensure t :config (doom-modeline-mode 1)) (use-package flycheck :ensure t :init (setq flycheck-emacs-lisp-load-path &#39;inherit) (setq flycheck-check-syntax-automatically &#39;(save mode-enabled idle-buffer-switch)) (setq flycheck-buffer-switch-check-intermediate-buffers t) (setq flycheck-display-errors-delay 0.25) :config (global-flycheck-mode)) 在flycheck里面启用了 idle-buffer-switch,flycheck会添加buffer-list-update-hook,"/>
+
+</head>
+<body><div class="sidebar animated fadeInDown">
+    <div class="logo-title">
+        <div class="title">
+            <img src="https://www.manpingou.com/uploads/allimg/200327/25-20032G01F1318.jpg" alt="profile picture">
+            <h3 title=""><a href="/">loyalpartner&#39;s blog</a></h3>
+            <div class="description">
+                <p>hello!</p>
+            </div>
+        </div>
+    </div>
+    <ul class="social-links">
+        
+    </ul>
+    <div class="footer">
+        <div class="by_farbox">&copy; loyalpartner 2020 </div>
+    </div>
+</div>
+<div class="main">
+    <div class="page-top animated fadeInDown">
+    <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+    </a>
+    <ul class="nav" id="navMenu">
+        
+        
+            
+            <li><a 
+                   href="/"
+                        
+                   title="">主页</a></li>
+        
+            
+            <li><a 
+                   href="/post/"
+                        
+                   title="">文章</a></li>
+        
+            
+            <li><a 
+                   href="/about/"
+                        
+                   title="">关于</a></li>
+        
+        
+        <li class="theme-switch-item">
+            <a class="theme-switch" title="Switch Theme">
+                <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+    <div class="autopagerize_page_element">
+        <div class="content">
+    <div class="post animated fadeInDown">
+        <div class="post-content">
+
+            <div class="post-title">
+                <h3>awesome-tab flycheck 引起 modeline 闪烁修复</h3>
+                
+                    <div class="info">
+                        <em class="fa fa-sun-o"></em>
+                        <span class="date">2020-07-04</span>
+                        <em class="fa fa-clock-o"></em>
+                        <span class="reading-time">One-minute read</span>
+                    </div>
+                
+            </div>
+
+            <p>问题描述:<br>
+<a href="https://github.com/manateelazycat/awesome-tab/issues/85">https://github.com/manateelazycat/awesome-tab/issues/85</a></p>
+<ul>
+<li>重现代码</li>
+</ul>
+<!-- raw HTML omitted -->
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-emacs-lisp" data-lang="emacs-lisp">(setq package-enable-at-startup <span style="color:#66d9ef">nil</span>)
+(setq package-archives
+      <span style="color:#f92672">&#39;</span>((<span style="color:#e6db74">&#34;org&#34;</span>          <span style="color:#f92672">.</span> <span style="color:#e6db74">&#34;http://orgmode.org/elpa/&#34;</span>)
+        (<span style="color:#e6db74">&#34;gnu&#34;</span> <span style="color:#f92672">.</span> <span style="color:#e6db74">&#34;http://elpa.gnu.org/packages/&#34;</span>)
+        (<span style="color:#e6db74">&#34;melpa&#34;</span>        <span style="color:#f92672">.</span> <span style="color:#e6db74">&#34;https://melpa.org/packages/&#34;</span>)
+        (<span style="color:#e6db74">&#34;melpa-stable&#34;</span> <span style="color:#f92672">.</span> <span style="color:#e6db74">&#34;http://stable.melpa.org/packages/&#34;</span>)))
+
+(package-initialize)
+
+<span style="color:#75715e">;; Bootstrap `use-package&#39;</span>
+(unless (package-installed-p <span style="color:#e6db74">&#39;use-package</span>)
+  (package-refresh-contents)
+  (package-install <span style="color:#e6db74">&#39;use-package</span>))
+(require <span style="color:#e6db74">&#39;use-package</span>)
+
+(use-package awesome-tab
+  :load-path <span style="color:#e6db74">&#34;~/.emacs.d/.local/straight/repos/awesome-tab&#34;</span>
+  :config
+  (awesome-tab-mode))
+
+
+(use-package doom-modeline
+  :ensure <span style="color:#66d9ef">t</span>
+  :config
+  (doom-modeline-mode <span style="color:#ae81ff">1</span>))
+
+(use-package flycheck
+  :ensure <span style="color:#66d9ef">t</span>
+  :init
+  (setq flycheck-emacs-lisp-load-path <span style="color:#e6db74">&#39;inherit</span>)
+  (setq flycheck-check-syntax-automatically <span style="color:#f92672">&#39;</span>(save mode-enabled idle-buffer-switch))
+  (setq flycheck-buffer-switch-check-intermediate-buffers <span style="color:#66d9ef">t</span>)
+  (setq flycheck-display-errors-delay <span style="color:#ae81ff">0.25</span>)
+  :config
+  (global-flycheck-mode))
+</code></pre></div><p>在flycheck里面启用了 idle-buffer-switch,flycheck会添加buffer-list-update-hook,<br>
+这个hook 和 with-temp-buffer 配合不好的话，会引起无限递归</p>
+<p><a href="https://www.gnu.org/software/emacs/manual/html%5Fnode/elisp/Buffer-List.html#Buffer-List">https://www.gnu.org/software/emacs/manual/html%5Fnode/elisp/Buffer-List.html#Buffer-List</a><br>
+Functions run by this hook should avoid calling select-window with a nil norecord argument or with-temp-buffer since either may lead to infinite recursion</p>
+<p>解决方法：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-emacs-lisp" data-lang="emacs-lisp">(let (buffer-list-update-hook)
+  (with-temp-buffer
+    (let ((truncate-partial-width-windows <span style="color:#66d9ef">nil</span>)
+          (inhibit-modification-hooks <span style="color:#66d9ef">t</span>)
+          deactivate-mark <span style="color:#75715e">;; Prevent deactivation of the mark!</span>
+          start)
+      (setq truncate-lines <span style="color:#66d9ef">nil</span>
+            buffer-undo-list <span style="color:#66d9ef">t</span>)
+      (setq start (<span style="color:#a6e22e">point</span>))
+      (while (and (<span style="color:#a6e22e">cdr</span> elts) <span style="color:#75715e">;; Always show the selected tab!</span>
+                  (progn
+                    (<span style="color:#a6e22e">delete-region</span> start (<span style="color:#a6e22e">point-max</span>))
+                    (<span style="color:#a6e22e">goto-char</span> (<span style="color:#a6e22e">point-max</span>))
+                    (<span style="color:#a6e22e">apply</span> <span style="color:#e6db74">&#39;insert</span> elts)
+                    (<span style="color:#a6e22e">goto-char</span> (<span style="color:#a6e22e">point-min</span>))
+                    (<span style="color:#a6e22e">&gt;</span> (<span style="color:#a6e22e">vertical-motion</span> <span style="color:#ae81ff">1</span>) <span style="color:#ae81ff">0</span>)))
+        (awesome-tab-scroll tabset <span style="color:#ae81ff">1</span>)
+        (setq elts (<span style="color:#a6e22e">cdr</span> elts))))))
+</code></pre></div>
+        </div>
+        <div class="post-footer">
+            <div class="info">
+                
+                
+            </div>
+        </div>
+
+        
+            
+        
+    </div>
+
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript"
+        src="https://loyalpartner.github.io/js/jquery.min.86b1e8f819ee2d9099a783e50b49dff24282545fc40773861f9126b921532e4c.js"
+        integrity="sha256-hrHo&#43;BnuLZCZp4PlC0nf8kKCVF/EB3OGH5EmuSFTLkw="
+        crossorigin="anonymous"></script>
+
+
+
+
+<script type="text/javascript"
+        src="https://loyalpartner.github.io/js/bundle.min.0f9c74cb78f13d1f15f33daff4037c70354f98acfbb97a6f61708966675c3cae.js"
+        integrity="sha256-D5x0y3jxPR8V8z2v9AN8cDVPmKz7uXpvYXCJZmdcPK4="
+        crossorigin="anonymous"></script>
+
+<script type="text/javascript"
+        src="https://loyalpartner.github.io/js/medium-zoom.min.92f21c856129f84aeb719459b3e6ac621a3032fd7b180a18c04e1d12083f8aba.js"
+        integrity="sha256-kvIchWEp&#43;ErrcZRZs&#43;asYhowMv17GAoYwE4dEgg/iro="
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

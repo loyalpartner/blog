@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>loyalpartner&#39;s blog</title>
+    <link>https://loyalpartner.github.io/</link>
+    <description>Recent content on loyalpartner&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 04 Jul 2020 00:00:00 +0800</lastBuildDate><atom:link href="https://loyalpartner.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>awesome-tab flycheck 引起 modeline 闪烁修复</title>
+      <link>https://loyalpartner.github.io/post/fix-awesome/</link>
+      <pubDate>Sat, 04 Jul 2020 00:00:00 +0800</pubDate>
+      
+      <guid>https://loyalpartner.github.io/post/fix-awesome/</guid>
+      <description>问题描述:
+https://github.com/manateelazycat/awesome-tab/issues/85
+ 重现代码  (setq package-enable-at-startup nil) (setq package-archives &amp;#39;((&amp;#34;org&amp;#34; . &amp;#34;http://orgmode.org/elpa/&amp;#34;) (&amp;#34;gnu&amp;#34; . &amp;#34;http://elpa.gnu.org/packages/&amp;#34;) (&amp;#34;melpa&amp;#34; . &amp;#34;https://melpa.org/packages/&amp;#34;) (&amp;#34;melpa-stable&amp;#34; . &amp;#34;http://stable.melpa.org/packages/&amp;#34;))) (package-initialize) ;; Bootstrap `use-package&amp;#39; (unless (package-installed-p &amp;#39;use-package) (package-refresh-contents) (package-install &amp;#39;use-package)) (require &amp;#39;use-package) (use-package awesome-tab :load-path &amp;#34;~/.emacs.d/.local/straight/repos/awesome-tab&amp;#34; :config (awesome-tab-mode)) (use-package doom-modeline :ensure t :config (doom-modeline-mode 1)) (use-package flycheck :ensure t :init (setq flycheck-emacs-lisp-load-path &amp;#39;inherit) (setq flycheck-check-syntax-automatically &amp;#39;(save mode-enabled idle-buffer-switch)) (setq flycheck-buffer-switch-check-intermediate-buffers t) (setq flycheck-display-errors-delay 0.25) :config (global-flycheck-mode)) 在flycheck里面启用了 idle-buffer-switch,flycheck会添加buffer-list-update-hook,</description>
+    </item>
+    
+    <item>
+      <title>Doom 添加知乎搜索引擎</title>
+      <link>https://loyalpartner.github.io/post/doom-zhihu-search/</link>
+      <pubDate>Sat, 04 Jul 2020 00:00:00 +0800</pubDate>
+      
+      <guid>https://loyalpartner.github.io/post/doom-zhihu-search/</guid>
+      <description>使用 SPC s o 快捷键可以选择搜索引擎，然后用这个搜索引擎搜索这个关键词，
+其中 Google,DuckDuckGo 可以提供搜索建议,在使用知乎的过程中，搜索关键词
+也提供搜索建议，于是查了下知乎搜索建议的 api
+ https://www.zhihu.com/api/v4/search/suggest?q=
+ 下面我们就把知乎的搜索建议添加到 doom-emacs 里面.
+(add-to-list counsel-search-engines-alist (zhihu &amp;#34;https://www.zhihu.com/api/v4/search/suggest&amp;#34; &amp;#34;https://www.zhihu.com/search?type=content&amp;amp;q=&amp;#34; counsel--search-request-data-zhihu)) (add-to-list &amp;#39;+lookup-provider-url-alist &amp;#39;(&amp;#34;zhihu&amp;#34; +lookup--online-backend-zhihu &amp;#34;https://www.zhihu.com/search?type=content&amp;amp;q=%25s&amp;#34;)) (defun counsel--search-request-data-zhihu (data) (mapcar (lambda (elt) (alist-get &amp;#39;query elt)) (alist-get &amp;#39;suggest data))) ;;;###autoload (defun +lookup--online-backend-zhihu (query) &amp;#34;Search google, starting with QUERY, with live autocompletion.&amp;#34; (cond ((fboundp &amp;#39;counsel-search) (let ((ivy-initial-inputs-alist `((t . ,query))) (counsel-search-engine &amp;#39;zhihu)) (call-interactively #&amp;#39;counsel-search) t)))) </description>
+    </item>
+    
+    <item>
+      <title>wsl2 install arch</title>
+      <link>https://loyalpartner.github.io/post/wsl2-install-arch/</link>
+      <pubDate>Thu, 04 Jun 2020 00:00:00 +0800</pubDate>
+      
+      <guid>https://loyalpartner.github.io/post/wsl2-install-arch/</guid>
+      <description>启用 wsl2
+dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart 默认使用 wsl2
+wsl --set-default-version 2 下载安装 ArchWSL yuk7/ArchWSL
+换源
+echo &amp;#39;Server = https://repo.huaweicloud.com/manjaro/stable/$repo/$arch&amp;#39; &amp;gt; /etc/pacman.d/mirrorlist 更新系统
+pacman-key --init # 初始化key pacman -Syy manjaro-keyring # 这里的 /var/cache/pacman... 就是刚才让询问你是否删除的文件 pacman -U /var/cache/pacman/pkg/manjaro-keyring-20190608-1-any.pkg.tar.xz # 强制安装，导入Manjaro的key pacman-key --init # 再次初始化key pacman-key --populate archlinux manjaro # 下载Arch和Manjaro的key pacman -Syyu # 更新软件源索引列表，并更新系统软件包 创建用户
+sudo useradd -r -m -s /bin/bash your_name sudo chmod +w /etc/sudoers sudo vim /etc/sudoers # 添加 your_name ALL=(ALL) ALL sudo chmod -w /etc/sudoers # 设置密码 passwd your_name 安装 yay</description>
+    </item>
+    
+  </channel>
+</rss>

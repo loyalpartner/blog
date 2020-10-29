@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en" data-theme=""><head>
+    <title> loyalpartner | Doom 添加知乎搜索引擎 </title>
+
+    
+    <meta charset="utf-8"><meta name="generator" content="Hugo 0.75.1" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta name="description" content="hello!">
+    
+    <link rel="stylesheet"
+          href="https://loyalpartner.github.io/css/style.min.2b188541d728e8afd69a6f1b8b83f89f2b138d671fb728eff20ff3f3dcf5b55e.css"
+          integrity="sha256-KxiFQdco6K/Wmm8bi4P4nysTjWcftyjv8g/z89z1tV4="
+          crossorigin="anonymous"
+          type="text/css"><link rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" 
+    integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" 
+    crossorigin="anonymous" />
+
+    
+    <link rel="shortcut icon" href="https://loyalpartner.github.iofavicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://loyalpartner.github.ioapple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://loyalpartner.github.iofavicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://loyalpartner.github.iofavicon-16x16.png">
+
+    <link rel="canonical" href="https://loyalpartner.github.io/post/doom-zhihu-search/">
+
+    
+    
+    
+    
+    <script type="text/javascript"
+            src="https://loyalpartner.github.io/js/anatole-header.min.e782db136ec18d105a4552702eac49f4620d6867da3fbf808bd53e806c96be6e.js"
+            integrity="sha256-54LbE27BjRBaRVJwLqxJ9GINaGfaP7&#43;Ai9U&#43;gGyWvm4="
+            crossorigin="anonymous"></script>
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Doom 添加知乎搜索引擎"/>
+<meta name="twitter:description" content="使用 SPC s o 快捷键可以选择搜索引擎，然后用这个搜索引擎搜索这个关键词，
+其中 Google,DuckDuckGo 可以提供搜索建议,在使用知乎的过程中，搜索关键词
+也提供搜索建议，于是查了下知乎搜索建议的 api
+ https://www.zhihu.com/api/v4/search/suggest?q=
+ 下面我们就把知乎的搜索建议添加到 doom-emacs 里面.
+(add-to-list counsel-search-engines-alist (zhihu &#34;https://www.zhihu.com/api/v4/search/suggest&#34; &#34;https://www.zhihu.com/search?type=content&amp;q=&#34; counsel--search-request-data-zhihu)) (add-to-list &#39;&#43;lookup-provider-url-alist &#39;(&#34;zhihu&#34; &#43;lookup--online-backend-zhihu &#34;https://www.zhihu.com/search?type=content&amp;q=%25s&#34;)) (defun counsel--search-request-data-zhihu (data) (mapcar (lambda (elt) (alist-get &#39;query elt)) (alist-get &#39;suggest data))) ;;;###autoload (defun &#43;lookup--online-backend-zhihu (query) &#34;Search google, starting with QUERY, with live autocompletion.&#34; (cond ((fboundp &#39;counsel-search) (let ((ivy-initial-inputs-alist `((t . ,query))) (counsel-search-engine &#39;zhihu)) (call-interactively #&#39;counsel-search) t)))) "/>
+
+</head>
+<body><div class="sidebar animated fadeInDown">
+    <div class="logo-title">
+        <div class="title">
+            <img src="https://www.manpingou.com/uploads/allimg/200327/25-20032G01F1318.jpg" alt="profile picture">
+            <h3 title=""><a href="/">loyalpartner&#39;s blog</a></h3>
+            <div class="description">
+                <p>hello!</p>
+            </div>
+        </div>
+    </div>
+    <ul class="social-links">
+        
+    </ul>
+    <div class="footer">
+        <div class="by_farbox">&copy; loyalpartner 2020 </div>
+    </div>
+</div>
+<div class="main">
+    <div class="page-top animated fadeInDown">
+    <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+    </a>
+    <ul class="nav" id="navMenu">
+        
+        
+            
+            <li><a 
+                   href="/"
+                        
+                   title="">主页</a></li>
+        
+            
+            <li><a 
+                   href="/post/"
+                        
+                   title="">文章</a></li>
+        
+            
+            <li><a 
+                   href="/about/"
+                        
+                   title="">关于</a></li>
+        
+        
+        <li class="theme-switch-item">
+            <a class="theme-switch" title="Switch Theme">
+                <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+    <div class="autopagerize_page_element">
+        <div class="content">
+    <div class="post animated fadeInDown">
+        <div class="post-content">
+
+            <div class="post-title">
+                <h3>Doom 添加知乎搜索引擎</h3>
+                
+                    <div class="info">
+                        <em class="fa fa-sun-o"></em>
+                        <span class="date">2020-07-04</span>
+                        <em class="fa fa-clock-o"></em>
+                        <span class="reading-time">One-minute read</span>
+                    </div>
+                
+            </div>
+
+            <p>使用 <code>SPC s o</code> 快捷键可以选择搜索引擎，然后用这个搜索引擎搜索这个关键词，<br>
+其中 Google,DuckDuckGo 可以提供搜索建议,在使用知乎的过程中，搜索关键词<br>
+也提供搜索建议，于是查了下知乎搜索建议的 api</p>
+<blockquote>
+<p><a href="https://www.zhihu.com/api/v4/search/suggest?q">https://www.zhihu.com/api/v4/search/suggest?q</a>=</p>
+</blockquote>
+<p>下面我们就把知乎的搜索建议添加到 doom-emacs 里面.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-emacs-lisp" data-lang="emacs-lisp">(add-to-list  counsel-search-engines-alist
+              (zhihu <span style="color:#e6db74">&#34;https://www.zhihu.com/api/v4/search/suggest&#34;</span>
+                     <span style="color:#e6db74">&#34;https://www.zhihu.com/search?type=content&amp;q=&#34;</span>
+                     counsel--search-request-data-zhihu))
+
+(add-to-list <span style="color:#e6db74">&#39;+lookup-provider-url-alist</span>
+             <span style="color:#f92672">&#39;</span>(<span style="color:#e6db74">&#34;zhihu&#34;</span> +lookup--online-backend-zhihu <span style="color:#e6db74">&#34;https://www.zhihu.com/search?type=content&amp;q=%25s&#34;</span>))
+
+(defun counsel--search-request-data-zhihu (data)
+  (<span style="color:#a6e22e">mapcar</span> (lambda (<span style="color:#a6e22e">elt</span>)
+            (alist-get <span style="color:#e6db74">&#39;query</span> <span style="color:#a6e22e">elt</span>))
+          (alist-get <span style="color:#e6db74">&#39;suggest</span> data)))
+
+<span style="color:#75715e">;;;###autoload</span>
+(defun +lookup--online-backend-zhihu (query)
+  <span style="color:#e6db74">&#34;Search google, starting with QUERY, with live autocompletion.&#34;</span>
+  (cond ((<span style="color:#a6e22e">fboundp</span> <span style="color:#e6db74">&#39;counsel-search</span>)
+         (let ((ivy-initial-inputs-alist <span style="color:#f92672">`</span>((<span style="color:#66d9ef">t</span> <span style="color:#f92672">.</span> <span style="color:#f92672">,</span>query)))
+               (counsel-search-engine <span style="color:#e6db74">&#39;zhihu</span>))
+           (<span style="color:#a6e22e">call-interactively</span> <span style="color:#a6e22e">#&#39;</span>counsel-search)
+           <span style="color:#66d9ef">t</span>))))
+</code></pre></div>
+        </div>
+        <div class="post-footer">
+            <div class="info">
+                
+                <span class="separator"><a class="tag" href="/tags/doom/">doom</a><a class="tag" href="/tags/emacs/">emacs</a></span>
+
+            </div>
+        </div>
+
+        
+            
+        
+    </div>
+
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript"
+        src="https://loyalpartner.github.io/js/jquery.min.86b1e8f819ee2d9099a783e50b49dff24282545fc40773861f9126b921532e4c.js"
+        integrity="sha256-hrHo&#43;BnuLZCZp4PlC0nf8kKCVF/EB3OGH5EmuSFTLkw="
+        crossorigin="anonymous"></script>
+
+
+
+
+<script type="text/javascript"
+        src="https://loyalpartner.github.io/js/bundle.min.0f9c74cb78f13d1f15f33daff4037c70354f98acfbb97a6f61708966675c3cae.js"
+        integrity="sha256-D5x0y3jxPR8V8z2v9AN8cDVPmKz7uXpvYXCJZmdcPK4="
+        crossorigin="anonymous"></script>
+
+<script type="text/javascript"
+        src="https://loyalpartner.github.io/js/medium-zoom.min.92f21c856129f84aeb719459b3e6ac621a3032fd7b180a18c04e1d12083f8aba.js"
+        integrity="sha256-kvIchWEp&#43;ErrcZRZs&#43;asYhowMv17GAoYwE4dEgg/iro="
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
