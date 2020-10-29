@@ -12,7 +12,7 @@ draft = false
 
 > <https://www.zhihu.com/api/v4/search/suggest?q>=  
 
-下面我们就把知乎的搜索建议添加到 doom-emacs 里面。  
+下面我们就把知乎的搜索建议添加到 doom-emacs 里面.  
 
 ```emacs-lisp
 (add-to-list  counsel-search-engines-alist
