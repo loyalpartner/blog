@@ -7,7 +7,7 @@ draft = false
 +++
 
 使用 `SPC s o` 快捷键可以选择搜索引擎，然后用这个搜索引擎搜索这个关键词，  
-其中 Google,DuckDuckGo 可以提供搜索建议，在使用知乎的过程中，搜索关键词  
+其中 Google,DuckDuckGo 可以提供搜索建议,在使用知乎的过程中，搜索关键词  
 也提供搜索建议，于是查了下知乎搜索建议的 api  
 
 > <https://www.zhihu.com/api/v4/search/suggest?q>=  
