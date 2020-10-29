@@ -1,0 +1,27 @@
+baseURL = "https://loyalpartner.github.io"
+languageCode = "zh-cn"
+title = "loyalpartner's blog"
+theme = "anatole"
+[params]
+title = "loyalpartner's blog"
+author = "loyalpartner"
+description = "hello!"
+profilePicture = "https://www.manpingou.com/uploads/allimg/200327/25-20032G01F1318.jpg"
+
+[menu]
+
+[[menu.main]]
+name = "主页"
+identifier = "home"
+weight = 100
+url = "/"
+[[menu.main]]
+name = "文章"
+weight = 200
+identifier = "posts"
+url = "/post/"
+[[menu.main]]
+name = "关于"
+weight = 300
+identifier = "about"
+url = "/about/"
