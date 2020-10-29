@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en" data-theme=""><head>
+    <title> loyalpartner | wsl2 install arch </title>
+
+    
+    <meta charset="utf-8"><meta name="generator" content="Hugo 0.75.1" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta name="description" content="hello!">
+    
+    <link rel="stylesheet"
+          href="https://loyalpartner.github.io/css/style.min.2b188541d728e8afd69a6f1b8b83f89f2b138d671fb728eff20ff3f3dcf5b55e.css"
+          integrity="sha256-KxiFQdco6K/Wmm8bi4P4nysTjWcftyjv8g/z89z1tV4="
+          crossorigin="anonymous"
+          type="text/css"><link rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" 
+    integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" 
+    crossorigin="anonymous" />
+
+    
+    <link rel="shortcut icon" href="https://loyalpartner.github.iofavicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://loyalpartner.github.ioapple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://loyalpartner.github.iofavicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://loyalpartner.github.iofavicon-16x16.png">
+
+    <link rel="canonical" href="https://loyalpartner.github.io/post/wsl2-install-arch/">
+
+    
+    
+    
+    
+    <script type="text/javascript"
+            src="https://loyalpartner.github.io/js/anatole-header.min.e782db136ec18d105a4552702eac49f4620d6867da3fbf808bd53e806c96be6e.js"
+            integrity="sha256-54LbE27BjRBaRVJwLqxJ9GINaGfaP7&#43;Ai9U&#43;gGyWvm4="
+            crossorigin="anonymous"></script>
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="wsl2 install arch"/>
+<meta name="twitter:description" content="启用 wsl2
+dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart 默认使用 wsl2
+wsl --set-default-version 2 下载安装 ArchWSL yuk7/ArchWSL
+换源
+echo &#39;Server = https://repo.huaweicloud.com/manjaro/stable/$repo/$arch&#39; &gt; /etc/pacman.d/mirrorlist 更新系统
+pacman-key --init # 初始化key pacman -Syy manjaro-keyring # 这里的 /var/cache/pacman... 就是刚才让询问你是否删除的文件 pacman -U /var/cache/pacman/pkg/manjaro-keyring-20190608-1-any.pkg.tar.xz # 强制安装，导入Manjaro的key pacman-key --init # 再次初始化key pacman-key --populate archlinux manjaro # 下载Arch和Manjaro的key pacman -Syyu # 更新软件源索引列表，并更新系统软件包 创建用户
+sudo useradd -r -m -s /bin/bash your_name sudo chmod &#43;w /etc/sudoers sudo vim /etc/sudoers # 添加 your_name ALL=(ALL) ALL sudo chmod -w /etc/sudoers # 设置密码 passwd your_name 安装 yay"/>
+
+</head>
+<body><div class="sidebar animated fadeInDown">
+    <div class="logo-title">
+        <div class="title">
+            <img src="https://www.manpingou.com/uploads/allimg/200327/25-20032G01F1318.jpg" alt="profile picture">
+            <h3 title=""><a href="/">loyalpartner&#39;s blog</a></h3>
+            <div class="description">
+                <p>hello!</p>
+            </div>
+        </div>
+    </div>
+    <ul class="social-links">
+        
+    </ul>
+    <div class="footer">
+        <div class="by_farbox">&copy; loyalpartner 2020 </div>
+    </div>
+</div>
+<div class="main">
+    <div class="page-top animated fadeInDown">
+    <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+    </a>
+    <ul class="nav" id="navMenu">
+        
+        
+            
+            <li><a 
+                   href="/"
+                        
+                   title="">主页</a></li>
+        
+            
+            <li><a 
+                   href="/post/"
+                        
+                   title="">文章</a></li>
+        
+            
+            <li><a 
+                   href="/about/"
+                        
+                   title="">关于</a></li>
+        
+        
+        <li class="theme-switch-item">
+            <a class="theme-switch" title="Switch Theme">
+                <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+    <div class="autopagerize_page_element">
+        <div class="content">
+    <div class="post animated fadeInDown">
+        <div class="post-content">
+
+            <div class="post-title">
+                <h3>wsl2 install arch</h3>
+                
+                    <div class="info">
+                        <em class="fa fa-sun-o"></em>
+                        <span class="date">2020-06-04</span>
+                        <em class="fa fa-clock-o"></em>
+                        <span class="reading-time">One-minute read</span>
+                    </div>
+                
+            </div>
+
+            <p>启用 wsl2</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">dism.exe /online /enable-feature /featurename<span style="color:#960050;background-color:#1e0010">:</span>Microsoft-Windows-Subsystem-Linux /all /norestart
+dism.exe /online /enable-feature /featurename<span style="color:#960050;background-color:#1e0010">:</span>VirtualMachinePlatform /all /norestart
+</code></pre></div><p>默认使用 wsl2</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">wsl --set-default-version 2
+</code></pre></div><p>下载安装 ArchWSL <a href="https://github.com/yuk7/ArchWSL/releases">yuk7/ArchWSL</a></p>
+<p>换源</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">echo <span style="color:#e6db74">&#39;Server = https://repo.huaweicloud.com/manjaro/stable/$repo/$arch&#39;</span> &gt; /etc/pacman.d/mirrorlist
+</code></pre></div><p>更新系统</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pacman-key --init <span style="color:#75715e"># 初始化key</span>
+pacman -Syy manjaro-keyring
+<span style="color:#75715e"># 这里的 /var/cache/pacman... 就是刚才让询问你是否删除的文件</span>
+pacman -U /var/cache/pacman/pkg/manjaro-keyring-20190608-1-any.pkg.tar.xz <span style="color:#75715e"># 强制安装，导入Manjaro的key</span>
+pacman-key --init <span style="color:#75715e"># 再次初始化key</span>
+pacman-key --populate archlinux manjaro <span style="color:#75715e"># 下载Arch和Manjaro的key</span>
+pacman -Syyu <span style="color:#75715e"># 更新软件源索引列表，并更新系统软件包</span>
+</code></pre></div><p>创建用户</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo useradd -r -m -s /bin/bash your_name
+sudo chmod +w /etc/sudoers
+sudo vim /etc/sudoers
+<span style="color:#75715e"># 添加 your_name ALL=(ALL) ALL</span>
+sudo chmod -w /etc/sudoers
+<span style="color:#75715e"># 设置密码</span>
+passwd your_name
+</code></pre></div><p>安装 yay</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo pacman -S --needed yay base-devel
+<span style="color:#75715e"># yay 换源</span>
+sudo yay --aururl <span style="color:#e6db74">&#34;https://aur.tuna.tsinghua.edu.cn&#34;</span> --save
+</code></pre></div><p>安装桌面环境</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo pacman -S xfce4 xfce4-goodies <span style="color:#75715e"># 直接回车全部选择</span>
+<span style="color:#75715e"># 安装中文字体</span>
+sudo pacman -S wqy-microhei
+</code></pre></div><p>启用中文环境</p>
+<p>sudo vim /etc/locale.gen。取消下面两行的注释：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">en_US.UTF-8 UTF-8
+zh_CN.UTF-8 UTF-8
+</code></pre></div><p>执行下面的代码初始化语言环境</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo locale-gen 
+</code></pre></div><p>在~/.zshrc中添加以下几行</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">export LC_CTYPE<span style="color:#f92672">=</span>zh_CN.UTF-8
+export LANG<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;zh_CN.UTF-8&#34;</span>
+export LC_ALL<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;zh_CN.UTF-8&#34;</span>
+</code></pre></div><p>声音支持<br>
+<a href="https://x410.dev/cookbook/wsl/enabling-sound-in-wsl-ubuntu-let-it-sing/">Enabling sound in WSL / Ubuntu - Let It Sing! - X410.dev</a></p>
+<p>其中 61 行的 ip 设置改成这样</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">load-module module-native-protocol-tcp auth-ip-acl<span style="color:#f92672">=</span>127.0.0.1;192.168.0.0/24 auth-anonymous<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+</code></pre></div><p><a href="https://my.oschina.net/u/4362704/blog/3308054">Manjaro WSL2 配置记录 - osc_t1bxxmjp的个人空间 - OSCHINA</a></p>
+
+        </div>
+        <div class="post-footer">
+            <div class="info">
+                <span class="separator"><a class="category" href="/categories/windows/">Windows</a></span>
+
+                <span class="separator"><a class="tag" href="/tags/arch/">arch</a><a class="tag" href="/tags/linux/">linux</a><a class="tag" href="/tags/wsl2/">wsl2</a><a class="tag" href="/tags/blog/">blog</a></span>
+
+            </div>
+        </div>
+
+        
+            
+        
+    </div>
+
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript"
+        src="https://loyalpartner.github.io/js/jquery.min.86b1e8f819ee2d9099a783e50b49dff24282545fc40773861f9126b921532e4c.js"
+        integrity="sha256-hrHo&#43;BnuLZCZp4PlC0nf8kKCVF/EB3OGH5EmuSFTLkw="
+        crossorigin="anonymous"></script>
+
+
+
+
+<script type="text/javascript"
+        src="https://loyalpartner.github.io/js/bundle.min.0f9c74cb78f13d1f15f33daff4037c70354f98acfbb97a6f61708966675c3cae.js"
+        integrity="sha256-D5x0y3jxPR8V8z2v9AN8cDVPmKz7uXpvYXCJZmdcPK4="
+        crossorigin="anonymous"></script>
+
+<script type="text/javascript"
+        src="https://loyalpartner.github.io/js/medium-zoom.min.92f21c856129f84aeb719459b3e6ac621a3032fd7b180a18c04e1d12083f8aba.js"
+        integrity="sha256-kvIchWEp&#43;ErrcZRZs&#43;asYhowMv17GAoYwE4dEgg/iro="
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
