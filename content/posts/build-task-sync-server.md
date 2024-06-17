@@ -35,9 +35,16 @@ services:
     restart: unless-stopped
 ```
 
-启动 task 同步服务器：
+## 启动 task 同步服务器：
 
 ```bash
 docker-compose up -d
 ```
 
+## 初始化 task 配置
+
+```
+task config sync.server.origin http://task.yskme.top:8080
+task config sync.server.client_id $(uuidgen)
+task config sync.encryption_secret blabla
+```
