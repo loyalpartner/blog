@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on 金屋</title>
+    <link>https://loyalpartner.github.io/blog/posts/</link>
+    <description>Recent content in Posts on 金屋</description>
+    <generator>Hugo</generator>
+    <language>zh</language>
+    <lastBuildDate>Sun, 12 Nov 2023 22:53:02 +0800</lastBuildDate>
+    <atom:link href="https://loyalpartner.github.io/blog/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>休眠后 Wifi 列表找不到热点</title>
+      <link>https://loyalpartner.github.io/blog/posts/wifi-restore/</link>
+      <pubDate>Sun, 12 Nov 2023 22:53:02 +0800</pubDate>
+      <guid>https://loyalpartner.github.io/blog/posts/wifi-restore/</guid>
+      <description>Macbook 安装了 Arch Linux 已经有一段时间了, 基本上能满足我的日常需求. 唯一不足的地方就是在设备进入休眠唤醒后无线网会找不到热点.&#xA;下面记录下重启网卡模块的方法:&#xA;找到网卡模块 hwnet | grep &amp;#39;net driver&amp;#39; 如果没有 hwnet 命令, 只要你记得网卡的设备名称, 比如我的是 wlp3s0, 那么也可以通过查看 /sys/class/net/wlp3s0/device/uevent 文件的 DRIVER 项获取.&#xA;重新加载网卡模块 sudo modprobe -r brcmfmac sudo modprobe -i brcmfmac </description>
+    </item>
+    <item>
+      <title>酷酷的 TUI 登陆管理器</title>
+      <link>https://loyalpartner.github.io/blog/posts/tui-login-manager/</link>
+      <pubDate>Fri, 10 Nov 2023 10:33:23 +0800</pubDate>
+      <guid>https://loyalpartner.github.io/blog/posts/tui-login-manager/</guid>
+      <description>安装 yay -S greetd{,-tuigreet} 修改配置文件 greetd 的配置文件位于 /etc/greetd/config.toml&#xA;[terminal] vt = &amp;#34;next&amp;#34; [default_session] command = &amp;#34;tuigreet --user-menu --user-menu-min-uid 1000 --remember --remember-session --time --issue --asterisks&amp;#34; user = &amp;#34;greeter&amp;#34; 设置开机启动 systemctl --enabale --now greetd 到这里， 酷酷的TUI登录界面就配置好了</description>
+    </item>
+  </channel>
+</rss>
