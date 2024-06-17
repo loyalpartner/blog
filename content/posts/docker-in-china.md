@@ -1,7 +1,7 @@
 +++
 title = 'Docker in China'
 date = 2024-06-17T15:32:36+08:00
-draft = true
+draft = false
 +++
 
 Docker 在国内已经完全无法使用了，因为它的镜像仓库在国内被封锁了。
@@ -16,6 +16,7 @@ cat <<EOF | sudo tee /etc/systemd/system/docker.service.d/proxy.conf
 [Service]
 Environment="HTTP_PROXY=http://127.0.0.1:7890"
 Environment="HTTPS_PROXY=http://127.0.0.1:7890"
+EOF
 
 sudo systemctl daemon-reload
 sudo systemctl restart docker
